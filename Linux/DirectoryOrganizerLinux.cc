@@ -73,6 +73,13 @@ void sendFile(std::string path, int runs){
 	}
 	std::cout << fileName << std::endl;
 
+	//Gets to see if there is already a file with the same name in the directory
+	//If there is, it appends the run count onto the fileName
+	if(runs > 0){
+		int lastIndex = fileName.find_last_of('.');
+		fileName = fileName.substr(0. lastIndex) + "(" + std::to_string(runs) + ")" + "." + ext;
+	}// end if
+
 }
 
 bool isDir(const char *file){
