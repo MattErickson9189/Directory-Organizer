@@ -68,7 +68,9 @@ void sendFile(std::string path, int runs){
 	}
 	
 	std::string fileName = path.substr(path.find_last_of("/")+1);
-
+	if(ext != "gz"){	
+		fileName = fileName.substr(0,fileName.find_last_of("."));
+	}
 	std::cout << fileName << std::endl;
 
 }
