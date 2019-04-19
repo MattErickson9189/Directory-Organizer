@@ -6,8 +6,10 @@
 #include <dirent.h>
 
 
+
 bool traverse(std::string path, int r);
 void sendFile(std::string path, int r);
+bool isDir(const char *file);
 
 
 int main(){
@@ -41,9 +43,13 @@ bool traverse(std::string path, int runs){
 	}
 
 	closedir(dp);
-
-	for(int i = 0; i < files.size(); i++){
-		sendFile(files[i],runs);
+	
+	for(int i =0; i < files.size(); i++){
+		
+		if(!isDir(files[i].c_str())){
+			std::cout << files[i] << " is a file" << std::endl;	
+		}
+		//sendFile(files[i],runs);
 	}
 
 }//End of traverse
@@ -57,6 +63,18 @@ void sendFile(std::string path, int runs){
 
 	dirPath = dirPath + "/" + ext;
 
-	std::cout << "This will be the created directory: " << dirPath << std::endl;
 
+}
+
+bool isDir(const char *file){
+	
+	DIR *directory = opendir(file);
+
+	if(directory != NULL){
+		closedir(directory);
+		return true;
+	}
+	else{
+		return false;
+	}
 }
