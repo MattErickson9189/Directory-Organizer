@@ -5,6 +5,23 @@
 #include <sys/types.h>
 #include <dirent.h>
 
+
+bool traverse(std::string path, int r);
+void sendFile(std::string path, int r);
+
+
+int main(){
+
+	char name[50];
+       	getlogin_r(name, 50);
+
+	std::string strName = name; 
+	std::string path = "/home/" + strName + "/Downloads/";
+
+	traverse(path,1);
+}//End of Main
+
+
 bool traverse(std::string path, int runs){
 
 	std::vector<std::string> files;
@@ -26,20 +43,16 @@ bool traverse(std::string path, int runs){
 	closedir(dp);
 
 	for(int i = 0; i < files.size(); i++){
-
-		std::cout << files[i] << std::endl;
+		sendFile(files[i],runs);
 	}
 
-}
+}//End of traverse
 
 
-int main(){
+void sendFile(std::string path, int runs){
 
-	char name[50];
-       	getlogin_r(name, 50);
+	std::string parent = path.substr(0,path.find_last_of("/"));
 
-	std::string strName = name; 
-	std::string path = "/home/" + strName + "/Downloads/";
+	std::cout << "This is the parent: " << parent << std::endl;
 
-	traverse(path,1);
 }
