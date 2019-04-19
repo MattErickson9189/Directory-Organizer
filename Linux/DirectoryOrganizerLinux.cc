@@ -47,9 +47,9 @@ bool traverse(std::string path, int runs){
 	for(int i =0; i < files.size(); i++){
 		
 		if(!isDir(files[i].c_str())){
-			std::cout << files[i] << " is a file" << std::endl;	
+
+			sendFile(files[i],runs);
 		}
-		//sendFile(files[i],runs);
 	}
 
 }//End of traverse
@@ -63,6 +63,13 @@ void sendFile(std::string path, int runs){
 
 	dirPath = dirPath + "/" + ext;
 
+	if(!isDir(dirPath.c_str())){
+//		mkdir(dirPath);
+	}
+	
+	std::string fileName = path.substr(path.find_last_of("/")+1);
+
+	std::cout << fileName << std::endl;
 
 }
 
