@@ -37,7 +37,7 @@ bool traverse(std::string path, int runs){
 	}
 
 	while (( dirp = readdir(dp)) !=NULL){
-		files.push_back(dirp->d_name);
+		files.push_back(path + dirp->d_name);
 	}
 
 	closedir(dp);
@@ -51,8 +51,12 @@ bool traverse(std::string path, int runs){
 
 void sendFile(std::string path, int runs){
 
-	std::string parent = path.substr(0,path.find_last_of("/"));
+	std::string dirPath = path.substr(0,path.find_last_of("/"));
 
-	std::cout << "This is the parent: " << parent << std::endl;
+	std::string ext = path.substr(path.find_last_of(".")+1);
+
+	dirPath = dirPath + "/" + ext;
+
+	std::cout << "This will be the created directory: " << dirPath << std::endl;
 
 }
