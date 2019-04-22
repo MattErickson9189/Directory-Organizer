@@ -7,7 +7,7 @@
 
 
 
-bool traverse(std::string path, int r);
+void traverse(std::string path, int r);
 void sendFile(std::string path, int r);
 bool isDir(const char *file);
 
@@ -30,20 +30,19 @@ int main(){
 }//End of Main
 
 
-bool traverse(std::string path, int runs){
+void traverse(std::string path, int runs){
 
 	//initializes the vector to store files then clears it.
 	std::vector<std::string> files;
 	files.clear();
 	int place = 0;
-	bool check = false; 
 	
 	DIR *dp;
 	struct dirent * dirp;
 	//Opens up the downloads folder
 	if((dp = opendir(path.c_str())) == NULL){
 		std::cout << "Error opening " << path << std::endl;
-		return 1;
+		exit(1);
 	}
 
 	//Adds all the files to the vector
@@ -58,13 +57,9 @@ bool traverse(std::string path, int runs){
 		//Checks to see if the file is a directory or regular file,
 		//if it is a regular file it sends it to be renamed and moved
 		if(!isDir(files[i].c_str())){
-
 			sendFile(files[i],runs);
-			check = true;
 		}
 	}
-
-	return check;
 
 }//End of traverse
 
