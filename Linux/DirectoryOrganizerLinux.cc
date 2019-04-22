@@ -68,13 +68,13 @@ void sendFile(std::string path, int runs){
 	dirPath = dirPath + "/" + ext + '/';
 
 	if(!isDir(dirPath.c_str())){
-/*	
-		const int dir_err = system("mkdir " + dirPath);
+	
+		std::string call = std::string("mkdir ") + dirPath;
+		const int dir_err = system(call.c_str());
 		if (dir_err == -1){
 				std::cout << "Error createing directory: " << dirPath << std::endl;
 				exit(1);
 		}
-*/
 	}
 
 	std::string fileName = path.substr(path.find_last_of("/")+1);
@@ -98,8 +98,14 @@ void sendFile(std::string path, int runs){
 	else{
 		destPath = dirPath + fileName;
 	}
-	std::cout << "Source Path: " << path << std::endl;
+
 	std::cout << "Dest Path: " << destPath << std::endl;
+
+	if(rename(path.c_str(), destPath.c_str())){
+			std::cout << "Error moving files!" << std::endl;
+			exit(1);
+	}
+
 }
 
 bool isDir(const char *file){
