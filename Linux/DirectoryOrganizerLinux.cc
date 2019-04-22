@@ -68,9 +68,15 @@ void sendFile(std::string path, int runs){
 	dirPath = dirPath + "/" + ext + '/';
 
 	if(!isDir(dirPath.c_str())){
-//		mkdir(dirPath);
+/*	
+		const int dir_err = system("mkdir " + dirPath);
+		if (dir_err == -1){
+				std::cout << "Error createing directory: " << dirPath << std::endl;
+				exit(1);
+		}
+*/
 	}
-
+	std::cout << dirPath << std::endl;
 	std::string fileName = path.substr(path.find_last_of("/")+1);
 	if(ext != "tar"){	
 		fileName = fileName.substr(0,fileName.find_last_of("."));
@@ -82,13 +88,14 @@ void sendFile(std::string path, int runs){
 		int lastIndex = fileName.find_last_of('.');
 		fileName = fileName.substr(0, lastIndex) + "(" + std::to_string(runs) + ")" + "." + ext;
 	}// end if
-
+/*
 	if(ext != "tar"){
 		std::cout << dirPath << fileName << '.' <<  ext << std::endl;
 	}
 	else{
 		std::cout << dirPath << fileName << std::endl;
 	}
+	*/
 }
 
 bool isDir(const char *file){
