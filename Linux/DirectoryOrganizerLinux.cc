@@ -76,7 +76,7 @@ void sendFile(std::string path, int runs){
 		}
 */
 	}
-	std::cout << dirPath << std::endl;
+
 	std::string fileName = path.substr(path.find_last_of("/")+1);
 	if(ext != "tar"){	
 		fileName = fileName.substr(0,fileName.find_last_of("."));
@@ -88,14 +88,18 @@ void sendFile(std::string path, int runs){
 		int lastIndex = fileName.find_last_of('.');
 		fileName = fileName.substr(0, lastIndex) + "(" + std::to_string(runs) + ")" + "." + ext;
 	}// end if
-/*
+
+	std::string destPath;
+
 	if(ext != "tar"){
-		std::cout << dirPath << fileName << '.' <<  ext << std::endl;
+		 destPath = dirPath + fileName + "." + ext;
+		
 	}
 	else{
-		std::cout << dirPath << fileName << std::endl;
+		destPath = dirPath + fileName;
 	}
-	*/
+	std::cout << "Source Path: " << path << std::endl;
+	std::cout << "Dest Path: " << destPath << std::endl;
 }
 
 bool isDir(const char *file){
