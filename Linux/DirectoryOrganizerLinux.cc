@@ -115,8 +115,8 @@ void sendFile(std::string path, int runs){
 	while(access(destPath.c_str(), F_OK) != -1){
 		int lastIndex = fileName.find_last_of('.');
 		runs++;
-		fileName = fileName.substr(0, lastIndex) + "(" + std::to_string(runs) + ")" + "." + ext;
-		destPath = dirPath + fileName + ".";
+		std::string rename = fileName.substr(0, lastIndex) + "(" + std::to_string(runs) + ")" + "." + ext;
+		destPath = dirPath + rename + ".";
 	}
 	std::cout << "Dest Path: " << destPath << std::endl;
 
