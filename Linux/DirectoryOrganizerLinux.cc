@@ -22,7 +22,7 @@ int main(){
 
 	int runs = 0;
 
-		traverse(path,runs);
+	traverse(path,runs);
 }//End of Main
 
 
@@ -87,21 +87,6 @@ void sendFile(std::string path, int runs){
 		fileName = fileName.substr(0,fileName.find_last_of("."));
 	}
 
-	//Gets to see if there is already a file with the same name in the directory
-	//If there is, it appends the run count onto the fileName
-/*	if(runs > 0){
-		int lastIndex = fileName.find_last_of('.');
-		fileName = fileName.substr(0, lastIndex) + "(" + std::to_string(runs) + ")" + "." + ext;
-
-		std::string testFile = dirPath + fileName;
-		while(access(testFile.c_str(), F_OK) == -1){
-			std::cout << "Duplicate File found!" << std::endl;
-			runs++;
-		}
-
-	}// end if
-*/
-	
 	std::string destPath;
 
 	if(ext != "tar"){
@@ -125,14 +110,6 @@ void sendFile(std::string path, int runs){
 		exit(1);
 	}
 
-/*
- 	std::cout << "Dest Path: " << destPath << std::endl;
-
-	if(rename(path.c_str(), destPath.c_str())){
-			std::cout << "Error moving files!" << std::endl;
-			exit(1);
-	}
-*/
 }
 
 bool isDir(const char *file){
