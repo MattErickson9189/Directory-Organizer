@@ -20,7 +20,7 @@ int main(){
 	std::string strName = name; 
 	std::string path = "/home/" + strName + "/Downloads/";
 
-	traverse(path,1);
+	traverse(path,0);
 }//End of Main
 
 
@@ -61,25 +61,34 @@ void sendFile(std::string path, int runs){
 
 	std::string ext = path.substr(path.find_last_of(".")+1);
 
-	dirPath = dirPath + "/" + ext;
+	if(ext == "gz"){
+		ext = "tar";
+	}
+
+	dirPath = dirPath + "/" + ext + '/';
 
 	if(!isDir(dirPath.c_str())){
 //		mkdir(dirPath);
 	}
-	
+
 	std::string fileName = path.substr(path.find_last_of("/")+1);
-	if(ext != "gz"){	
+	if(ext != "tar"){	
 		fileName = fileName.substr(0,fileName.find_last_of("."));
 	}
-	std::cout << fileName << std::endl;
 
 	//Gets to see if there is already a file with the same name in the directory
 	//If there is, it appends the run count onto the fileName
 	if(runs > 0){
 		int lastIndex = fileName.find_last_of('.');
-		fileName = fileName.substr(0. lastIndex) + "(" + std::to_string(runs) + ")" + "." + ext;
+		fileName = fileName.substr(0, lastIndex) + "(" + std::to_string(runs) + ")" + "." + ext;
 	}// end if
 
+	if(ext != "tar"){
+		std::cout << dirPath << fileName << '.' <<  ext << std::endl;
+	}
+	else{
+		std::cout << dirPath << fileName << std::endl;
+	}
 }
 
 bool isDir(const char *file){
