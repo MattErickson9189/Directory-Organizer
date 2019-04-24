@@ -15,7 +15,7 @@ echo '[Desktop Entry]' >> Organizer.desktop
 echo 'Version=1.0' >> Organizer.desktop
 echo 'Type=Application' >> Organizer.desktop
 echo 'Terminal=false' >> Organizer.desktop
-echo 'Exec='/home/$USER/Directory-Organizer/DirectoryOrganizerLinux.cc'' >> Organizer.desktop
-echo 'Name=keyMap' >> Organizer.desktop
+echo 'Exec='/home/$USER/Directory-Organizer/LinuxDirectoryOrg.exe'' >> Organizer.desktop
+echo 'Name=Organizer' >> Organizer.desktop
 
 
