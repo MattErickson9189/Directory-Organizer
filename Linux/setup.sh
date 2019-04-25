@@ -23,3 +23,5 @@ chmod u+x Organizer.desktop
 cp Organizer.desktop /home/$USER/.config/autostart/ 
 
 echo "Setup Complete!"
+echo "You can now delete this folder"
+
