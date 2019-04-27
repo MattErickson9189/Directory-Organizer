@@ -29,6 +29,26 @@ int main(){
 	//runs then gets appended to the end of a duplicate file
 	int runs = 0;
 
+	//specifies where to find the settings file and then opens it
+	std::ifstream settings;
+	settings.open("./config/settings.csv");
+
+	//The option from settings.csv will be stored in sortBy
+	std::string sortBy;
+	while(settings.good()){
+		std::string line;
+		getline(settings, line, ',');
+
+		if(line.length() > 1){
+			sortBy = line;
+		}
+	}//end of reading settings file
+
+	std::cout << sortBy << std:: endl;
+	
+	//Closes the settings file
+	settings.close();
+
 	traverse(path,runs);
 
 }//End of Main
