@@ -4,7 +4,7 @@
 #include <string>
 #include <sys/types.h>
 #include <dirent.h>
-
+#include <fstream>
 
 
 void traverse(std::string path, int r);
@@ -14,9 +14,13 @@ bool isDir(const char *file);
 
 int main(){
 
-	char name[50];
+	//On a unix system the max length a username can be is 32 characters long, just to add some extra room the buffer max will be size 50
+	int max = 50;
+
+	char *name = (char*)malloc(sizeof(*name) * max);
+	
 	//getlogin_r returns the user name currently logged in, this is to navigate to the downloads folder	
-	getlogin_r(name, 50);
+	getlogin_r(name, max);
 
 	std::string strName = name; 
 	std::string path = "/home/" + strName + "/Downloads/";
