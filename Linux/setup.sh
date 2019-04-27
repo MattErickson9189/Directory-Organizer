@@ -10,7 +10,7 @@ cp DirectoryOrganizerLinux.cc /home/$USER/Directory-Organizer/
 cp setup.sh /home/$USER/Directory-Organizer/
 cp LinuxDirectoryOrg.exe /home/$USER/Directory-Organizer/
 
-echo '#!/usr/bin/env xdg-open' >> Organizer.desktop
+echo '#!/usr/bin/env xdg-open' > Organizer.desktop
 echo '[Desktop Entry]' >> Organizer.desktop
 echo 'Version=1.0' >> Organizer.desktop
 echo 'Type=Application' >> Organizer.desktop
