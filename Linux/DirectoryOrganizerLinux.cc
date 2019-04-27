@@ -35,16 +35,27 @@ int main(){
 
 	//The option from settings.csv will be stored in sortBy
 	std::string sortBy;
+	//The second value from settigns.csv will be stored in addedPath
+	std::string addedPath;
+
+	//count to make sure the values get stored correctly
+	int value = 0;
 	while(settings.good()){
 		std::string line;
 		getline(settings, line, ',');
 
-		if(line.length() > 1){
+		if(line.length() > 1 && value == 0){
 			sortBy = line;
+			value++;
 		}
+		if(line.length() > 1 && value == 1){
+			addedPath = line;
+		}
+
 	}//end of reading settings file
 
-	std::cout << sortBy << std:: endl;
+	std::cout << sortBy << std::endl;
+	std::cout << addedPath << std::endl;
 	
 	//Closes the settings file
 	settings.close();
