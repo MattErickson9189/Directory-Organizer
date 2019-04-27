@@ -23,7 +23,7 @@ int main(){
 	getlogin_r(name, max);
 
 	std::string strName = name; 
-	std::string path = "/home/" + strName + "/Downloads/";
+	std::string path = "/home/" + strName;
 
 	//Runs is used to rename duplicate files, it gets incremented everytime a duplicate file is found
 	//runs then gets appended to the end of a duplicate file
@@ -54,11 +54,11 @@ int main(){
 
 	}//end of reading settings file
 
-	std::cout << sortBy << std::endl;
-	std::cout << addedPath << std::endl;
-	
 	//Closes the settings file
 	settings.close();
+
+	//appends the path from settings.csv to the path to be sorted
+	path = path + addedPath;
 
 	traverse(path,runs);
 
