@@ -1,4 +1,4 @@
-#Directory Organizer 
+Directory Organizer 
 
 This program organizes all the files in your downloads folder by extension type. Future releases will allow the user to change the directory to be organized and will allow the user to choose if they want the files to be released by extension, date, or alphabetically. On Linux systems the setup.sh script will move all the files to where they need to be so the program will run every time you login. As of right now you need to manually set auto start up on Windows but in the future there will be a script that does it for you as well.
 
