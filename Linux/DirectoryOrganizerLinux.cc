@@ -6,9 +6,22 @@
 #include <dirent.h>
 #include <fstream>
 
+//Traverse loops through all files in the directory and if they are a regular file it moves them
+void traverse(std::string path, std::string sortBy);
 
-void traverse(std::string path);
-void sendFile(std::string path);
+//Decides which sorting function to use
+void sendFile(std::string path, std::string sortBy);
+
+//Organizes files based on extension
+void extMov(std::string path);
+
+//Organizes files alphabetically
+void alphaMov(std::string path);
+
+//Organizes files by month and year
+void dateMov(std::string path);
+
+//Checks to see if the path is a regular file or a directory
 bool isDir(const char *file);
 
 
@@ -60,12 +73,12 @@ int main(){
 	//appends the path from settings.csv to the path to be sorted
 	path = path + addedPath;
 
-	traverse(path);
+	traverse(path, sortBy);
 
 }//End of Main
 
 
-void traverse(std::string path){
+void traverse(std::string path, std::string sortBy){
 
 	//initializes the vector to store files then clears it.
 	std::vector<std::string> files;
@@ -92,14 +105,23 @@ void traverse(std::string path){
 		//Checks to see if the file is a directory or regular file,
 		//if it is a regular file it sends it to be renamed and moved
 		if(!isDir(files[i].c_str())){
-			sendFile(files[i]);
+			sendFile(files[i], sortBy);
 		}
 	}
 
 }//End of traverse
 
 
-void sendFile(std::string path){
+void sendFile(std::string path, std::string sortBy){
+
+	if(sortBy == "ext"){
+		extMov(path);
+	}//end of extension check
+
+
+}//end of sendFile
+
+void extMov(std::string path){
 
 	std::string dirPath = path.substr(0,path.find_last_of("/"));
 
@@ -153,7 +175,7 @@ void sendFile(std::string path){
 		int lastIndex = fileName.find_last_of('.');
 		runs++;
 		std::string rename = fileName.substr(0, lastIndex) + "(" + std::to_string(runs) + ")" + "." + ext;
-		destPath = dirPath + rename + ".";
+		destPath = dirPath + rename;
 	}//end of while
 	std::cout << "Dest Path: " << destPath << std::endl;
 
@@ -163,7 +185,7 @@ void sendFile(std::string path){
 		exit(1);
 	}//end of if
 
-}//end of sendFile
+}//end of extMov 
 
 //Checks to see if a file is a directory or regular file
 bool isDir(const char *file){
