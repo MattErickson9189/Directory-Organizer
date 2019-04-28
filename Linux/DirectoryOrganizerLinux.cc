@@ -117,7 +117,9 @@ void sendFile(std::string path, std::string sortBy){
 	if(sortBy == "ext"){
 		extMov(path);
 	}//end of extension check
-
+	else if(sortBy == "aplha"){
+		alphaMov(path);
+	}
 
 }//end of sendFile
 
@@ -186,6 +188,16 @@ void extMov(std::string path){
 	}//end of if
 
 }//end of extMov 
+
+//Sorts files alphabetically
+void alphaMov(std::string path){
+	
+	std::string parentPath = path.substr(0,path.find_last_of('/'));
+	std::string file = path.substr(path.find_last_of('/')+1);
+	char firstLetter = toupper(file[0]);
+
+
+}//end of alphaMov
 
 //Checks to see if a file is a directory or regular file
 bool isDir(const char *file){
