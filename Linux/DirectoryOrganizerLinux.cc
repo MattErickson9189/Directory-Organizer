@@ -7,8 +7,8 @@
 #include <fstream>
 
 
-void traverse(std::string path, int r);
-void sendFile(std::string path, int r);
+void traverse(std::string path);
+void sendFile(std::string path);
 bool isDir(const char *file);
 
 
@@ -60,12 +60,12 @@ int main(){
 	//appends the path from settings.csv to the path to be sorted
 	path = path + addedPath;
 
-	traverse(path,runs);
+	traverse(path);
 
 }//End of Main
 
 
-void traverse(std::string path, int runs){
+void traverse(std::string path){
 
 	//initializes the vector to store files then clears it.
 	std::vector<std::string> files;
@@ -92,19 +92,22 @@ void traverse(std::string path, int runs){
 		//Checks to see if the file is a directory or regular file,
 		//if it is a regular file it sends it to be renamed and moved
 		if(!isDir(files[i].c_str())){
-			sendFile(files[i],runs);
+			sendFile(files[i]);
 		}
 	}
 
 }//End of traverse
 
 
-void sendFile(std::string path, int runs){
+void sendFile(std::string path){
 
 	std::string dirPath = path.substr(0,path.find_last_of("/"));
 
 	//Grabs the extention of the file
 	std::string ext = path.substr(path.find_last_of(".")+1);
+
+	//flag to help rename files when there are duplicates
+	int runs = 0;
 
 	//This is so tar.gz files get sent to the tar/ directory
 	if(ext == "gz"){
