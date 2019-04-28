@@ -112,7 +112,7 @@ void sendFile(std::string path){
 	//This is so tar.gz files get sent to the tar/ directory
 	if(ext == "gz"){
 		ext = "tar";
-	}
+	}//end of if
 
 	//sets the string with the desired dest path
 	dirPath = dirPath + "/" + ext + '/';
@@ -126,14 +126,14 @@ void sendFile(std::string path){
 		if (dir_err == -1){
 				std::cout << "Error createing directory: " << dirPath << std::endl;
 				exit(1);
-		}
-	}
+		}//end of nested if
+	}//end of if
 
 	//Grabs the file name with the extension
 	std::string fileName = path.substr(path.find_last_of("/")+1);
 	if(ext != "tar"){	
 		fileName = fileName.substr(0,fileName.find_last_of("."));
-	}
+	}//end of if
 
 	std::string destPath;
 
@@ -141,10 +141,10 @@ void sendFile(std::string path){
 	if(ext != "tar"){
 		 destPath = dirPath + fileName + "." + ext;
 		
-	}
+	}//end of if
 	else{
 		destPath = dirPath + fileName;
-	}
+	}//end of else
 
 	//Checks to see if the file already exists in the destination directory, if it does 
 	//the file gets the run number appended before the extension. This is looped until the file does not exist
@@ -154,16 +154,16 @@ void sendFile(std::string path){
 		runs++;
 		std::string rename = fileName.substr(0, lastIndex) + "(" + std::to_string(runs) + ")" + "." + ext;
 		destPath = dirPath + rename + ".";
-	}
+	}//end of while
 	std::cout << "Dest Path: " << destPath << std::endl;
 
 	//Moves the renamed file to its destination directory
 	if(rename(path.c_str(), destPath.c_str())){
 		std::cout << "Error moving files!" << std::endl;
 		exit(1);
-	}
+	}//end of if
 
-}
+}//end of sendFile
 
 //Checks to see if a file is a directory or regular file
 bool isDir(const char *file){
