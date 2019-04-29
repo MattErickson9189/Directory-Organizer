@@ -191,10 +191,49 @@ void extMov(std::string path){
 
 //Sorts files alphabetically
 void alphaMov(std::string path){
-	
+
+
+	int runs = 0;
+
 	std::string parentPath = path.substr(0,path.find_last_of('/'));
-	std::string file = path.substr(path.find_last_of('/')+1);
-	char firstLetter = toupper(file[0]);
+	std::string fileName = path.substr(path.find_last_of('/')+1);
+	char firstLetter = toupper(fileName[0]);
+
+	//Stores the target directory
+	std::string aplhaPath = parentPath + "/" + firstLetter + "/";
+
+	if(!isDir(aplhaPath.c_str())){
+		
+		std::cout << aplhaPath << " Will be created!" << std::endl;
+		std::string call = std::string("mkdir ") + aplhaPath;
+
+		const int dir_err = system(call.c_str());
+		if (dir_err == -1){
+				std::cout << "Error createing directory: " << aplhaPath << std::endl;
+				exit(1);
+		}//end of nested if
+
+	std::string destPath = aplhaPath + fileName;
+
+	}//end of if
+	
+	//Checks to see if the file already exists in the destination directory, if it does 
+	//the file gets the run number appended before the extension. This is looped until the file does not exist
+	//in the destination directory, then the file is ready to be moved
+	while(access(destPath.c_str(), F_OK) != -1){
+		int lastIndex = fileName.find_last_of('.');
+		runs++;
+		//std::string rename = fileName.substr(0, lastIndex) + "(" + std::to_string(runs) + ")" + "." + ext;
+		destPath = aplhaPath + rename;
+	}//end of while
+	std::cout << "Dest Path: " << destPath << std::endl;
+
+	//Moves the renamed file to its destination directory
+	if(rename(path.c_str(), destPath.c_str())){
+		std::cout << "Error moving files!" << std::endl;
+		exit(1);
+	}//end of if
+
 
 
 }//end of alphaMov
