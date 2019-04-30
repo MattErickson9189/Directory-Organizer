@@ -12,22 +12,6 @@ int main(){
 	ifstream settings;
 	settings.open("settings.csv");
 
-	while(settings.good()){
-		string line;
-		getline(settings, line, ',');
-		
-		if(line.length() > 1 && check == 0){
-				method = line;
-				check = 1;
-		}//end of check
-		else if(line.length() > 1 && check == 1){
-				path = line;
-				break;
-		}
-
-	}
-
-	settings.close();
 
 	int x;
 
@@ -42,7 +26,24 @@ int main(){
 		cin >> x;
 
 		if(x == 1){
+			while(settings.good()){
+				string line;
+				getline(settings, line, ',');
+		
+			if(line.length() > 1 && check == 0){
+				method = line;
+				check = 1;
+			}//end of check
+			else if(line.length() > 1 && check == 1){
+				path = line;
+				break;
+			}
+
+			}
+
 			cout << "Method: " << method << endl << "Path: " << path << endl;
 		}//end of if
 	}//end of while
+
+	settings.close();
 }//end of main
