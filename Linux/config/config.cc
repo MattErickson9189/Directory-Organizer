@@ -35,8 +35,7 @@ int main(){
 	int x;
 
 	while(x != 4){
-	
-	
+		
 		cout << "[1] View current configs\n" << "[2] Change sorting method\n" << "[3] Change directory to be sorted\n";
 		cout << "[4} Exit" << endl;
 
@@ -62,6 +61,7 @@ int main(){
 
 
 			cout << endl << "Method: " << method << endl << "Path: " << path << endl << endl;
+
 		}//end of if
 
 		else if(x ==2){
@@ -81,9 +81,22 @@ int main(){
 			method = choice;				
 			output << choice << "," << path << "," << endl;
 			output.close();
-
 		}//end of else if
-		system("CLS");
+		
+		else if(x == 3){
+			
+			output.open("settings.csv");
+			string input;
+
+			cout << endl << "Enter in the new path: ";
+
+			cin >> input;
+			path = input; 
+
+			output << method << "," << path << "," << endl;
+			output.close();
+		}//end of else if
+
 	}//end of while
 
 }//end of main
