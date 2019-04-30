@@ -5,12 +5,6 @@ using namespace std;
 
 int main(){
 
-
-	cout << "Welcome to the Directory Organizer congiguration setup!" << endl;
-	
-	cout << "[1] View current configs\n" << "[2] Change sorting method\n" << "[3] Change directory to be sorted\n";
-	cout << "[4} Exit" << endl;
-
 	string method;
 	string path;
 	int check = 0;
@@ -37,11 +31,18 @@ int main(){
 
 	int x;
 
-	cout << "Enter your choice: ";
-	cin >> x;
+	while(x != 4){
 
-	if(x == 1){
-		cout << "Method: " << method << endl << "Path: " << path << endl;
-	}
+		cout << "Welcome to the Directory Organizer congiguration setup!" << endl;
+	
+		cout << "[1] View current configs\n" << "[2] Change sorting method\n" << "[3] Change directory to be sorted\n";
+		cout << "[4} Exit" << endl;
 
-}
+		cout << "Enter your choice: ";
+		cin >> x;
+
+		if(x == 1){
+			cout << "Method: " << method << endl << "Path: " << path << endl;
+		}//end of if
+	}//end of while
+}//end of main
