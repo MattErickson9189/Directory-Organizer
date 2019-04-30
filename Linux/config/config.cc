@@ -98,5 +98,5 @@ int main(){
 		}//end of else if
 
 	}//end of while
-
+	cout << "\nGoodbye!" << endl;
 }//end of main
