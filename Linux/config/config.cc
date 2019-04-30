@@ -1,5 +1,7 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
+
 
 using namespace std;
 
@@ -14,7 +16,21 @@ int main(){
 
 	ifstream settings;
 	settings.open("settings.csv");
+	ofstream output;
 
+	while(settings.good()){
+		string line;
+		getline(settings, line, ',');
+		
+		if(line.length() > 1 && check == 0){
+			method = line;
+			check = 1;
+		}//end of check
+		else if(line.length() > 1 && check == 1){
+			path = line;
+			break;
+		}//end of else
+	}//end of while
 
 	int x;
 
@@ -42,10 +58,32 @@ int main(){
 			}
 
 			}
+			settings.close();
+
 
 			cout << endl << "Method: " << method << endl << "Path: " << path << endl << endl;
 		}//end of if
+
+		else if(x ==2){
+
+			output.open("settings.csv");
+			vector<string> choices = {"aplha", "ext", "date"};
+
+			cout << endl << "Which method would you like to use?" << endl;
+			cout << "[1] aplha\n" << "[2] ext\n" << "[3] date\n" << endl;
+
+			int c;
+			cin >> c;
+			
+			string choice = choices.at(c-1);
+			
+			cout << "Sorting method is now: " << choice << endl << endl;
+			method = choice;				
+			output << choice << "," << path << "," << endl;
+			output.close();
+
+		}//end of else if
+		system("CLS");
 	}//end of while
 
-	settings.close();
 }//end of main
