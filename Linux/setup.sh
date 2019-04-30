@@ -14,6 +14,10 @@ mkdir /home/$USER/Directory-Organizer/config/
 cp ./config/config.cc /home/$USER/Directory-Organizer/config/
 cp ./config/settings.csv /home/$USER/Directory-Organizer/config/
 
+g++ ./config/config.cc -o config.exe
+chmod u+x config.exe
+
+sudo cp config.exe /bin/
 
 echo '#!/usr/bin/env xdg-open' > Organizer.desktop
 echo '[Desktop Entry]' >> Organizer.desktop
