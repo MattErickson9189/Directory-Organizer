@@ -5,6 +5,9 @@ using namespace std;
 
 int main(){
 
+
+	cout << "Welcome to the Directory Organizer congiguration setup!" << endl;
+	
 	string method;
 	string path;
 	int check = 0;
@@ -16,8 +19,7 @@ int main(){
 	int x;
 
 	while(x != 4){
-
-		cout << "Welcome to the Directory Organizer congiguration setup!" << endl;
+	
 	
 		cout << "[1] View current configs\n" << "[2] Change sorting method\n" << "[3] Change directory to be sorted\n";
 		cout << "[4} Exit" << endl;
@@ -41,7 +43,7 @@ int main(){
 
 			}
 
-			cout << "Method: " << method << endl << "Path: " << path << endl;
+			cout << endl << "Method: " << method << endl << "Path: " << path << endl << endl;
 		}//end of if
 	}//end of while
 
