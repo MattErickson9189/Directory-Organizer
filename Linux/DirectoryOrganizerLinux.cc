@@ -60,10 +60,10 @@ int main(){
 		if(line.length() > 1 && value == 0){
 			sortBy = line;
 			value++;
-		}
+		}//end of if
 		if(line.length() > 1 && value == 1){
 			addedPath = line;
-		}
+		}//end of if
 
 	}//end of reading settings file
 
