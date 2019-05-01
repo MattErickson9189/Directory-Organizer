@@ -199,8 +199,13 @@ void alphaMov(std::string path){
 	std::string fileName = path.substr(path.find_last_of('/')+1);
 	char firstLetter = toupper(fileName[0]);
 
+	//Grabs the extention of the file
+	std::string ext = path.substr(path.find_last_of(".")+1);
+
 	//Stores the target directory
 	std::string aplhaPath = parentPath + "/" + firstLetter + "/";
+
+	std::string destPath;
 
 	if(!isDir(aplhaPath.c_str())){
 		
@@ -212,10 +217,8 @@ void alphaMov(std::string path){
 				std::cout << "Error createing directory: " << aplhaPath << std::endl;
 				exit(1);
 		}//end of nested if
-
-	std::string destPath = aplhaPath + fileName;
-
 	}//end of if
+		 destPath = aplhaPath + fileName;
 	
 	//Checks to see if the file already exists in the destination directory, if it does 
 	//the file gets the run number appended before the extension. This is looped until the file does not exist
@@ -223,7 +226,7 @@ void alphaMov(std::string path){
 	while(access(destPath.c_str(), F_OK) != -1){
 		int lastIndex = fileName.find_last_of('.');
 		runs++;
-		//std::string rename = fileName.substr(0, lastIndex) + "(" + std::to_string(runs) + ")" + "." + ext;
+		std::string rename = fileName.substr(0, lastIndex) + "(" + std::to_string(runs) + ")" + "." + ext;
 		destPath = aplhaPath + rename;
 	}//end of while
 	std::cout << "Dest Path: " << destPath << std::endl;
