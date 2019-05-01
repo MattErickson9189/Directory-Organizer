@@ -5,6 +5,7 @@
 #include <sys/types.h>
 #include <dirent.h>
 #include <fstream>
+#include <ctime>
 
 //Traverse loops through all files in the directory and if they are a regular file it moves them
 void traverse(std::string path, std::string sortBy);
@@ -120,6 +121,9 @@ void sendFile(std::string path, std::string sortBy){
 	else if(sortBy == "aplha"){
 		alphaMov(path);
 	}
+	else if(sortBy == "data"){
+		dateMov(path);
+	}//end of else if
 
 }//end of sendFile
 
@@ -240,6 +244,19 @@ void alphaMov(std::string path){
 
 
 }//end of alphaMov
+
+void dateMov(std::string path){
+
+	time_t date = time(0);
+
+	tm *ltm = localtime(&date);
+
+	std::string month = std::string(1 + ltm->tm_mon);
+	std::string year = std::string(1970 + ltm->tm_year);
+	
+	std::cout << "Month: " << month << " Year: " << year << std::endl;
+
+}//end of dateMov
 
 //Checks to see if a file is a directory or regular file
 bool isDir(const char *file){
