@@ -15,3 +15,13 @@ myFile
 
 On windows the program will keep looping until the user closes it.
 On Linux the program will terminate.
+
+REQUIREMENTS
+
+Linux:
+
+In order for the program to work you need to have g++ installed. I believe it is included when you install gcc.
+
+Windows:
+
+Not Available Yet
