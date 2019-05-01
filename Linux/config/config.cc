@@ -46,7 +46,8 @@ int main(){
 		}//end of else
 	}//end of while
 
-	int x;
+	char input[256];
+	int x = atoi(input);
 
 	while(x != 4){
 		
@@ -54,7 +55,9 @@ int main(){
 		cout << "[4} Exit" << endl;
 
 		cout << "Enter your choice: ";
-		cin >> x;
+		cin >> input;
+
+		x = atoi(input);
 
 		if(x == 1){
 			while(settings.good()){
@@ -110,6 +113,14 @@ int main(){
 			output << method << "," << path << "," << endl;
 			output.close();
 		}//end of else if
+		else if(x ==4){
+				break;
+		}//end of else if
+		else{
+			
+			cout << "\nSorry: " << x << " is not a valid option!" << endl;
+			cout << "Please select a valid option!\n" << endl;
+		}//end of else
 
 	}//end of while
 	cout << "\nGoodbye!" << endl;
