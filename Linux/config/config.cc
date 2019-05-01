@@ -1,11 +1,25 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-
+#include <unistd.h>
 
 using namespace std;
 
 int main(){
+
+
+	//gets the login name and sets up path to the settings folder
+	
+	//sets the buffer for getlogin_r
+	int max = 50;
+
+	char *name = (char*)malloc(sizeof(*name) * max);
+
+	//gets the login name of the user thats currently logged in
+	getlogin_r(name, max);
+
+	string strName = name;
+	string configPath = "/home/" + strName + "/Directory-Organizer/config/settings.csv";
 
 
 	cout << "Welcome to the Directory Organizer congiguration setup!" << endl;
@@ -15,7 +29,7 @@ int main(){
 	int check = 0;
 
 	ifstream settings;
-	settings.open("settings.csv");
+	settings.open(configPath);
 	ofstream output;
 
 	while(settings.good()){
@@ -66,7 +80,7 @@ int main(){
 
 		else if(x ==2){
 
-			output.open("settings.csv");
+			output.open(configPath);
 			vector<string> choices = {"aplha", "ext", "date"};
 
 			cout << endl << "Which method would you like to use?" << endl;
@@ -85,7 +99,7 @@ int main(){
 		
 		else if(x == 3){
 			
-			output.open("settings.csv");
+			output.open(configPath);
 			string input;
 
 			cout << endl << "Enter in the new path: ";
