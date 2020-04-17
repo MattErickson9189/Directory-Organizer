@@ -17,7 +17,7 @@ main.o : main.cc
 
 complete: main.o organizer.o traverser.o directoryOrganizer.o extensionMover.o
 	g++ -g -o DirectoryOrganizerLinux main.o Organizer.o Traverser.o DirectoryOrganizer.o ExtensionMover.o
+	rm *.o
 
 clean:
-	rm -rf DirectoryOrganizerLinux
-	rm -rf *.o
+	rm  DirectoryOrganizerLinux
