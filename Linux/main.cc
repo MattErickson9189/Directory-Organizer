@@ -7,7 +7,7 @@ int main(){
     Traverser traverser;
     ExtensionMover mover;
 
-    DirectoryOrganizer directoryOrganizer(traverser,mover);
+    DirectoryOrganizer directoryOrganizer(traverser,&mover);
     directoryOrganizer.organize("/home/matt/Downloads/");
 
 }

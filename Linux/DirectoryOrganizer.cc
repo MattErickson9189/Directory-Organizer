@@ -1,7 +1,7 @@
 #include "DirectoryOrganizer.h"
 #include <string>
 
-DirectoryOrganizer::DirectoryOrganizer(Traverser &traverser, Organizer &organizeMethod){
+DirectoryOrganizer::DirectoryOrganizer(Traverser &traverser, Organizer *organizeMethod){
     
     this->traverser = traverser;
     this->organizeMethod = organizeMethod;

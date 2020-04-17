@@ -9,10 +9,10 @@ class Traverser{
     public:
 
         Traverser();
-        Traverser(Organizer &method);
+        Traverser(Organizer *method);
         void traverse(std::string);
-        void setMethod(Organizer &method);
+        void setMethod(Organizer *method);
 
     private:
-        Organizer method;
+        Organizer *method;
 };

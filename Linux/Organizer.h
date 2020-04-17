@@ -4,7 +4,7 @@
 
 class Organizer{
     public:
-        void sendFile(std::string path);
+        void virtual sendFile(std::string path) =0;
         bool isDir(const char *file);
 
 };
