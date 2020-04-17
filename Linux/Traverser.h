@@ -8,8 +8,10 @@ class Traverser{
 
     public:
 
-        void traverse(std::string);
+        Traverser();
         Traverser(Organizer &method);
+        void traverse(std::string);
+        void setMethod(Organizer &method);
 
     private:
         Organizer method;
