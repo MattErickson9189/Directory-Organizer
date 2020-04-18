@@ -15,9 +15,12 @@ extensionMover.o: ExtensionMover.cc ExtensionMover.h
 main.o : main.cc
 	g++ -g -c main.cc
 
-complete: main.o organizer.o traverser.o directoryOrganizer.o extensionMover.o
+complete: main.o organizer.o traverser.o directoryOrganizer.o extensionMover.o 
 	g++ -g -o DirectoryOrganizerLinux main.o Organizer.o Traverser.o DirectoryOrganizer.o ExtensionMover.o
+	g++ ./config/config.cc -o conf
+	mv conf ./config
 	rm *.o
 
 clean:
 	rm  DirectoryOrganizerLinux
+	rm ./config/conf
