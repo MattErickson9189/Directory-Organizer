@@ -1,4 +1,6 @@
 #include "ExtensionMover.h"
+#include <unistd.h>
+#include <iostream>
 
 void ExtensionMover::sendFile(std::string path){
     std::string dirPath = path.substr(0,path.find_last_of("/"));
@@ -29,7 +31,7 @@ void ExtensionMover::sendFile(std::string path){
         std::string call = std::string("mkdir ") + dirPath;
         const int dir_err = system(call.c_str());
         if (dir_err == -1){
-                std::cout << "Error createing directory: " << dirPath << std::endl;
+                std::cout << "Error creating directory: " << dirPath << std::endl;
                 exit(1);
         }//end of nested if
     }//end of if

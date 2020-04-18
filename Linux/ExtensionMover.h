@@ -1,6 +1,4 @@
 #include "Organizer.h"
-#include <unistd.h>
-#include <iostream>
 
 class ExtensionMover: public Organizer{
 
