@@ -3,8 +3,13 @@
 void ExtensionMover::sendFile(std::string path){
     std::string dirPath = path.substr(0,path.find_last_of("/"));
 
+    //Checks to see if the file does not have an extension
+    int index = path.find_last_of(".");
+    if(index == -1){
+        return;
+    }
     //Grabs the extention of the file
-    std::string ext = path.substr(path.find_last_of(".")+1);
+    std::string ext = path.substr(index+1);
 
     //flag to help rename files when there are duplicates
     int runs = 0;
