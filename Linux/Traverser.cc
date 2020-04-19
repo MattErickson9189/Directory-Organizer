@@ -38,7 +38,6 @@ void Traverser::traverse(std::string path){
         //if it is a regular file it sends it to be renamed and moved
         std::cout << files[i] << std::endl;
         if(!method->isDir(files[i].c_str())){
-            std::cout << "TRUE" << std::endl;
             method->sendFile(files[i]);
         }
         
