@@ -23,4 +23,5 @@ int main(){
     DirectoryOrganizer directoryOrganizer(traverser,organizer);
     directoryOrganizer.organize(path);
 
+    free(name);
 }
